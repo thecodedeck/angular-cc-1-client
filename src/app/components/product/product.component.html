@@ -1,0 +1,42 @@
+<div class="column gap-1 wrapper">
+  <!-- Product Thumbnail -->
+  <img [src]="product.image" alt="Product Thumbnail" />
+
+  <!-- Product Name -->
+  <h2 class="title">{{ product.name | truncateName : 16 : "..." }}</h2>
+
+  <!-- Product Price -->
+  <div class="row gap-05">
+    <span class="price-label">Price:</span>
+    <span class="price">{{ product.price | price }}</span>
+  </div>
+
+  <!-- Product Rating (PrimeNg rating component) -->
+  <p-rating
+    [(ngModel)]="product.rating"
+    [readonly]="true"
+    iconCancelClass="hidden"
+  ></p-rating>
+
+  <!-- Action buttons -->
+  <div class="row gap-05">
+    <button
+      type="button"
+      pButton
+      icon="pi pi-pencil"
+      (click)="editProduct()"
+      label="Edit"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-trash"
+      (click)="confirmDelete()"
+      label="Delete"
+      class="p-button-danger"
+      #deleteButton
+    ></button>
+  </div>
+</div>
+
+<p-confirmPopup></p-confirmPopup>

@@ -1,0 +1,53 @@
+<p-dialog
+  [header]="header"
+  [(visible)]="display"
+  [modal]="true"
+  [closable]="false"
+>
+  <div class="column gap-1 form-wrapper" [formGroup]="productForm">
+    <!-- Name -->
+    <div class="row gap-05">
+      <span class="price-label">Name:</span>
+      <input type="text" formControlName="name" />
+    </div>
+
+    <!-- Price -->
+    <div class="row gap-05">
+      <span class="price-label">Price:</span>
+      <input type="text" formControlName="price" />
+    </div>
+
+    <!-- Image -->
+    <div class="row gap-05">
+      <span class="price-label">Image:</span>
+      <input type="text" formControlName="image" />
+    </div>
+
+    <!-- Rating -->
+    <p-rating
+      formControlName="rating"
+      [readonly]="false"
+      iconCancelClass="hidden"
+      class="rating"
+    ></p-rating>
+  </div>
+
+  <!-- Footer with action buttons -->
+  <p-footer>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-check"
+      (click)="onConfirm()"
+      label="Confirm"
+      [class.disabled]="!productForm.valid"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-times"
+      (click)="onCancel()"
+      label="Cancel"
+    ></button>
+  </p-footer>
+</p-dialog>
